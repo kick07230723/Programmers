@@ -9,6 +9,7 @@ public class NumberOfFactors {
 
         for(int i=left; i<=right; i++){
             if(Math.ceil(Math.sqrt(i)) == Math.floor(Math.sqrt(i))){
+                //if (i % Math.sqrt(i) == 0)
                 answer -= i;
             }else{
                 answer += i;
