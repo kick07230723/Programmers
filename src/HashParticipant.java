@@ -8,6 +8,7 @@ public class HashParticipant {
         solution(participant, completion);
     }
 
+    /* 힌트보고 재작성 */
     public static String solution(String[] participant, String[] completion) {
         String answer = "";
         Map<String,Integer> participantMap = new HashMap<>();
@@ -29,6 +30,7 @@ public class HashParticipant {
         return answer;
     }
 
+    /* ArrayList를 활용 -> 라인은 줄었지만, 성능에서 또 걸림 */
     public static String solutionSecond(String[] participant, String[] completion) {
         String answer = "";
         List<String> participantList = new ArrayList<>();
@@ -43,6 +45,7 @@ public class HashParticipant {
         return answer;
     }
 
+    /* 중첩 loop를 이용한 풀이 -> 속도에서 걸림 */
     public static String solutionFirst(String[] participant, String[] completion) {
         String answer = "";
         List<String> participantList = new ArrayList<>();
