@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddingSomeNumbers {
 
@@ -20,5 +21,9 @@ public class AddingSomeNumbers {
         }
 
         return answer;
+    }
+
+    public static int solution2(int[]numbers) {
+        return 45 - Arrays.stream(numbers).sum();
     }
 }
