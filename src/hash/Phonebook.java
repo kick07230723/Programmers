@@ -1,3 +1,5 @@
+package hash;
+
 import java.util.Arrays;
 
 public class Phonebook {
