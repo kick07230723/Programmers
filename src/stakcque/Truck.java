@@ -1,8 +1,6 @@
 package stakcque;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Truck {
@@ -14,25 +12,29 @@ public class Truck {
     }
 
     public static int solution(int bridge_length, int weight, int[] truck_weights) {
-        int answer = 0;
-        List<Integer> waitingTrucks = Arrays.stream(truck_weights).boxed().collect(Collectors.toList());
-        ArrayList<Integer> passingTrucks = new ArrayList<>();
+        int seconds = 0;
+        int truckIndex = 0;
+        int passingWeights = 0;
+        Queue<Integer> passingTruck = new LinkedList<>();
 
-        while(passingTrucks.size()>0 || waitingTrucks.size()>0){
-            answer++;
-            // 다리를 건너는중 -> 지난
-            if(passingTrucks.size()>0){
-                passingTrucks.remove(0);
-                continue;
-            }
-            // 대기 -> 건너는중
-            if(waitingTrucks.size()>0){
-                passingTrucks.add(waitingTrucks.get(0));
-                waitingTrucks.remove(0);
-                continue;
+        while(truck_weights.length > truckIndex){
+            seconds++;
+
+            // 건너가는 트럭이 있다면 앞에서 하나씩 제거
+            if(passingTruck.size() == bridge_length){
+                passingWeights -= passingTruck.poll();
             }
 
+            if(weight >= passingWeights + truck_weights[truckIndex]){
+                // 다리 하중이 괜찮다면, 한 대 더 건너가기
+                passingTruck.add(truck_weights[truckIndex]);
+                passingWeights += truck_weights[truckIndex];
+                truckIndex++;
+            }else{
+                passingTruck.add(0);
+                // 다라 하중이 꽉차면, 다리 위의 트럭만 1칸 건너가기
+            }
         }
-        return answer;
+        return seconds+bridge_length;
     }
 }
