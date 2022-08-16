@@ -1,3 +1,5 @@
+package bruteForce;
+
 import java.util.ArrayList;
 import java.util.List;
 
